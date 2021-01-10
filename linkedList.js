@@ -81,14 +81,35 @@ class LinkedList {
         }
         return currentNode;
     }
+
+    reverseList() {
+        if (!this.head.next) {
+            return this.head;
+        }
+        let first = this.head;
+        // this.taile = this.head;
+        let second = first.next;
+        while (second) {
+            const temp = second.next;
+            second.next = first;
+            first = second;
+            second = temp;
+            // console.log('----------', first);
+        }
+        this.taile = this.head;
+        this.head.next = null;
+        this.head = first;
+        return this;
+    }
 }
 
-const myLittleLinkedList = new LinkedList(6);
-myLittleLinkedList.prepend(10);
-myLittleLinkedList.append(20);
-myLittleLinkedList.append(30);
-myLittleLinkedList.insert(1, 2);
-console.log(myLittleLinkedList.remove(1));
+const test = new LinkedList(20);
+test.append(1);
+test.prepend(10);
+test.append(199)
+console.log(test.reverseList());
+console.log(test.printList());
 
 
 
+// 10 20 1 199
