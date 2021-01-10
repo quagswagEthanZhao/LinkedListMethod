@@ -38,6 +38,9 @@ class Stack {
     pop() {
         //Remove from the top of the stack;
         if (!this.top) return 'Empty Stack';
+        if (this.top == this.bottom) {
+            this.bottom = null;
+        }
         const holdingPointer = this.top;//In case still need the access to it
         const tempHead = this.top.next;
         this.top = tempHead;
@@ -49,5 +52,6 @@ class Stack {
 const myStack = new Stack();
 myStack.push('Hello');
 myStack.push('Second');
+// myStack.pop()
 // console.log(myStack.push('Second'));
 console.log(myStack.pop());
