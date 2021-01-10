@@ -49,9 +49,38 @@ class Stack {
     }
 }
 
-const myStack = new Stack();
-myStack.push('Hello');
-myStack.push('Second');
-// myStack.pop()
-// console.log(myStack.push('Second'));
-console.log(myStack.pop());
+//Array
+class CllStackArray {
+    constructor() {
+        this.stack = [],
+            this.head = null,
+            this.bottom = null,
+            this.length = null
+    }
+
+    peek() {
+        return this.stack[this.stack.length - 1];
+    }
+
+    push(value) {
+        this.stack.push(value);
+        this.head = this.stack[this.stack.length - 1];
+        this.bottom = this.stack[0];
+        this.length = this.stack.length;
+        return this;
+    }
+
+    pop() {
+        this.stack.pop();
+        this.head = this.stack[this.stack.length - 1];
+        this.bottom = this.stack[0];
+        this.length = this.stack.length;
+        return this;
+    }
+}
+
+const stack = new CllStackArray;
+stack.push('Hello');
+stack.push('Second Item');
+console.log(stack.push('Third Item'));
+
