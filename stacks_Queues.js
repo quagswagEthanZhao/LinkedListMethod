@@ -79,8 +79,43 @@ class CllStackArray {
     }
 }
 
-const stack = new CllStackArray;
-stack.push('Hello');
-stack.push('Second Item');
-console.log(stack.push('Third Item'));
+class Queue {
+    constructor() {
+        this.first = null;
+        this.last = null;
+        this.length = 0;
+    }
+    peek() {
+        return this.first;
+    }
+
+    enqueue(value) {
+        const newNode = new Node(value)
+        if (!this.first) {
+            this.first = newNode;
+            this.last = this.first;
+            this.length = 1;
+        } else {
+            this.last.next = newNode;
+            this.last = newNode;
+            this.length++;
+        }
+        return this;
+    }
+    dequeue() {
+        if (!this.first) {
+            return 'Empty queue';
+        }
+        if (this.first === this.last) {
+            this.last = null;
+        }
+        const holdingFirst = this.first;
+        this.first = this.first.next;
+        this.length--;
+        return this;
+    }
+}
+
+const myqueue = new Queue;
+
 
